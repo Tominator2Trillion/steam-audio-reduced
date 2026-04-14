@@ -17,7 +17,6 @@
 #include "error.h"
 #include "context.h"
 #include "hrtf_database.h"
-#include "path_simulator.h"
 #include "profiler.h"
 using namespace ipl;
 

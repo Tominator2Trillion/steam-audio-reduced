@@ -19,7 +19,6 @@
 #include "context.h"
 #include "error.h"
 #include "memory_allocator.h"
-#include "overlap_save_convolution_effect.h"
 using namespace ipl;
 
 #include "phonon.h"
@@ -95,36 +94,11 @@ struct HandleTraits
 #define DEFINE_OPAQUE_HANDLE(x, y)  namespace ipl { class y; } namespace api { template <> struct HandleTraits<ipl::y> { typedef x opaque_type; }; }
 
 DEFINE_OPAQUE_HANDLE(IPLContext, Context);
-DEFINE_OPAQUE_HANDLE(IPLSerializedObject, SerializedObject);
-DEFINE_OPAQUE_HANDLE(IPLEmbreeDevice, EmbreeDevice);
-DEFINE_OPAQUE_HANDLE(IPLOpenCLDeviceList, OpenCLDeviceList);
-DEFINE_OPAQUE_HANDLE(IPLOpenCLDevice, OpenCLDevice);
-DEFINE_OPAQUE_HANDLE(IPLRadeonRaysDevice, RadeonRaysDevice);
-DEFINE_OPAQUE_HANDLE(IPLTrueAudioNextDevice, TANDevice);
-DEFINE_OPAQUE_HANDLE(IPLScene, IScene);
-DEFINE_OPAQUE_HANDLE(IPLStaticMesh, IStaticMesh);
-DEFINE_OPAQUE_HANDLE(IPLInstancedMesh, IInstancedMesh);
 DEFINE_OPAQUE_HANDLE(IPLHRTF, HRTFDatabase);
 DEFINE_OPAQUE_HANDLE(IPLPanningEffect, PanningEffect);
 DEFINE_OPAQUE_HANDLE(IPLBinauralEffect, BinauralEffect);
-DEFINE_OPAQUE_HANDLE(IPLVirtualSurroundEffect, VirtualSurroundEffect);
-DEFINE_OPAQUE_HANDLE(IPLAmbisonicsEncodeEffect, AmbisonicsEncodeEffect);
-DEFINE_OPAQUE_HANDLE(IPLAmbisonicsPanningEffect, AmbisonicsPanningEffect);
-DEFINE_OPAQUE_HANDLE(IPLAmbisonicsBinauralEffect, AmbisonicsBinauralEffect);
-DEFINE_OPAQUE_HANDLE(IPLAmbisonicsRotationEffect, AmbisonicsRotateEffect);
-DEFINE_OPAQUE_HANDLE(IPLAmbisonicsDecodeEffect, AmbisonicsDecodeEffect);
-DEFINE_OPAQUE_HANDLE(IPLDirectEffect, DirectEffect);
-DEFINE_OPAQUE_HANDLE(IPLReflectionEffect, IndirectEffect);
-DEFINE_OPAQUE_HANDLE(IPLReflectionMixer, IndirectMixer);
-DEFINE_OPAQUE_HANDLE(IPLPathEffect, PathEffect);
-DEFINE_OPAQUE_HANDLE(IPLProbeArray, ProbeArray);
-DEFINE_OPAQUE_HANDLE(IPLProbeBatch, ProbeBatch);
-DEFINE_OPAQUE_HANDLE(IPLSource, SimulationData);
-DEFINE_OPAQUE_HANDLE(IPLSimulator, SimulationManager);
 
 namespace api {
-
-template <> struct HandleTraits<ipl::TripleBuffer<ipl::OverlapSaveFIR>> { typedef IPLReflectionEffectIR opaque_type; };
 
 template <typename T>
 typename HandleTraits<T>::opaque_type createHandle(shared_ptr<Context> context,
